@@ -35,8 +35,9 @@ app.post("/", function(req, res){
       ] 
   };
 
+  // post to maichim api
   const jsonData = JSON.stringify(data);
-  const url = "https://us1.api.mailchimp.com/3.0/lists/c4e781aa0e";
+  const url = "https://us5.api.mailchimp.com/3.0/lists/c4e781aa0e";
   const option = {
     method:"POST",
     auth: "thuong:fafaef6a94a1cd51f6b934dee255e2fd-us5"
@@ -57,13 +58,14 @@ app.post("/", function(req, res){
   request.write(jsonData);
   request.end();
 
+// click the try again button then track back to home page
   app.post("/failure", function(req, res){
     res.redirect("/")
   })
 
 
 });
-app.listen(3000, function(req, res){
+app.listen(process.env.PORT || 3000, function(req, res){
     console.log("server work");
 });
 // Api Id:  fafaef6a94a1cd51f6b934dee255e2fd-us5
